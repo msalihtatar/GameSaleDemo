@@ -6,23 +6,32 @@ using GameSaleDemo.Abstract;
 
 namespace GameSaleDemo.Concrete
 {
-    public class CustomerService: BaseCustomerManager
+    public class CustomerService: ICustomerService
     {
         private IPersonCheckService _personCheckService;
         public CustomerService(IPersonCheckService personcheckService)
         {
             _personCheckService = personcheckService;
         }
-        public override void Save(Customer customer)
+        public void Save(Customer customer)
         {
             if (_personCheckService.CheckIfRealPerson(customer))
             {
-                base.Save(customer);
+                Console.WriteLine("Doğrulama başarılı. Kaydedildi.");
             }
             else
             {
-                throw new Exception("not a valid person");
+                Console.WriteLine("Doğrulama başarısız. Kaydedilemedi.");
             }
+        }
+        public void Delete(Customer customer)
+        {
+            Console.WriteLine("Customer is Deleted");
+        }
+
+        public void Update(Customer customer)
+        {
+            Console.WriteLine("Your informations is updated.");
         }
     }
 }

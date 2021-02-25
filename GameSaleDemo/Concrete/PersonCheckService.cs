@@ -10,7 +10,14 @@ namespace GameSaleDemo.Concrete
     {
         public bool CheckIfRealPerson(Customer customer)
         {
-            return true;
+            if (customer.NationalityID == "1234567890" && customer.DateofBirthYear == "1991")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using GameSaleDemo.Entities;
+using GameSaleDemo.Abstract;
 namespace GameSaleDemo.Concrete
 {
-    public class SaleService
+    public class SaleService: ISaleService
     {
         public void Sale(Customer customer, Game game, Campaign campaign)
         {

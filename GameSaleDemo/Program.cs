@@ -9,13 +9,13 @@ namespace GameSaleDemo
     {
         static void Main(string[] args)
         {
+            CustomerService customerService = new CustomerService(new PersonCheckService());
+            Customer customer = new Customer { NationalityID = "1234567890", DateofBirthYear = "1991", FirstName = "SALİH", LastName = "TATAR" };
+            customerService.Save(customer);            
+
             GameService gameService = new GameService();
             Game game = new Game { GameId = "1452", GameName = "Witcher 3", GamePrice = 120 };
             gameService.Add(game);
-
-            BaseCustomerManager customerManager = new CustomerService(new PersonCheckService());
-            Customer customer = new Customer { NationalityID = "1234567890", DateofBirthYear = "1991", FirstName = "Salih", LastName = "Tatar" };
-            customerManager.Save(customer);
 
             CampaignService campaignService = new CampaignService();
             Campaign campaign = new Campaign { CampaignId = "1234", CampaignName = "Black Friday", Discount = 60 };
@@ -23,9 +23,6 @@ namespace GameSaleDemo
 
             SaleService saleService = new SaleService();
             saleService.Sale(customer, game, campaign);
-            
-
-
         }
     }
 }
